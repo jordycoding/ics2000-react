@@ -25,4 +25,24 @@ async function getDevices(): Promise<Device[]> {
   return await response.json();
 }
 
-export { getRoomsRaw, getRooms, getDevices };
+async function turnOn(deviceId: number) {
+  await fetch(`/api/devices/${deviceId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ state: "On" }),
+  });
+}
+
+async function turnOff(deviceId: number) {
+  await fetch(`/api/devices/${deviceId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ state: "Off" }),
+  });
+}
+
+export { getRoomsRaw, getRooms, getDevices, turnOn, turnOff };
