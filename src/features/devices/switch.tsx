@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Flex, Text, Box } from "@chakra-ui/react";
+import { Button, ButtonGroup, Flex, Text, Box, Spacer } from "@chakra-ui/react";
 import React from "react";
 import Device from "../../types/device";
 
@@ -7,13 +7,19 @@ interface Props {
 }
 function Switch(props: Props) {
   return (
-    <Flex flexDirection="row" justifyContent="start" alignItems="center">
+    <Flex
+      flexDirection="row"
+      width="100%"
+      justifyContent="start"
+      alignItems="center"
+    >
       <Box>
         <Text>{props.device.name}</Text>
       </Box>
+      <Spacer />
       <ButtonGroup>
-        <Button>On</Button>
-        <Button>Off</Button>
+        <Button colorScheme="green">On</Button>
+        <Button colorScheme="red">Off</Button>
       </ButtonGroup>
     </Flex>
   );
