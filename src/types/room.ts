@@ -4,6 +4,6 @@ interface Room {
   id: number;
   name: string;
   modules: Device[];
-};
+}
 
 export default Room;

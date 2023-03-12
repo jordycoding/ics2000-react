@@ -3,14 +3,16 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      "/api": {
-        target: "http://127.0.0.1:3000",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
-});
+  device: Device;
+}
+function Switch(props: Props) {
+  return (
+    <Flex flexDirection="row" justifyContent="start" alignItems="center">
+      <Box>
+        <Text>{props.device.name}</Text>
+      </Box>
+      <ButtonGroup>
+        <Button>On</Button>
+        <Button>Off</Button>
+      </ButtonGroup>
+    </Flex>

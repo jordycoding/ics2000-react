@@ -3,11 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "standard-with-typescript",
-    "prettier"
-  ],
+  "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",

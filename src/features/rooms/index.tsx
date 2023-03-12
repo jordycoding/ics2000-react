@@ -11,7 +11,7 @@ function Rooms() {
     dispatch(fetchRooms());
   }, []);
   return (
-    <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+    <Grid templateColumns="repeat(3, 1fr)" gap={6}>
       {rooms.map((room) => (
         <Room key={room.id} room={room} />
       ))}

@@ -3,7 +3,7 @@ import roomsReducer from "./roomsSlice";
 
 const store = configureStore({
   reducer: {
-    rooms: roomsReducer
+    rooms: roomsReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
