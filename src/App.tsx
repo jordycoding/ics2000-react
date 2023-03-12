@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import "./App.css";
+import LoginPage from "./pages/login";
 
 function App() {
-  return <ChakraProvider></ChakraProvider>;
+  return (
+    <ChakraProvider>
+      <LoginPage />
+    </ChakraProvider>
+  );
 }
 
 export default App;
