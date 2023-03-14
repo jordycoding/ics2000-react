@@ -1,4 +1,4 @@
-import { Grid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { fetchRooms } from "../../stores/roomsSlice";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks";
@@ -11,11 +11,11 @@ function Rooms() {
     dispatch(fetchRooms());
   }, []);
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+    <SimpleGrid minChildWidth="400px" spacing="20px">
       {rooms.map((room) => (
         <Room key={room.id} room={room} />
       ))}
-    </Grid>
+    </SimpleGrid>
   );
 }
 

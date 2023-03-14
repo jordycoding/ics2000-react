@@ -45,4 +45,14 @@ async function turnOff(deviceId: number) {
   });
 }
 
-export { getRoomsRaw, getRooms, getDevices, turnOn, turnOff };
+async function dimDevice(deviceId: number, percentage: number) {
+  await fetch(`/api/devices/${deviceId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ state: { Dim: percentage } }),
+  });
+}
+
+export { getRoomsRaw, getRooms, getDevices, turnOn, turnOff, dimDevice };

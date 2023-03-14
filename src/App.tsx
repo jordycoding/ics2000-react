@@ -4,14 +4,15 @@ import LoginPage from "./pages/login";
 import { Provider } from "react-redux";
 import store from "./stores/store";
 import MainPage from "./pages/mainPage";
+import theme from "./theme";
 
 function App() {
   return (
+      <ChakraProvider theme={theme}>
     <Provider store={store}>
-      <ChakraProvider>
         <MainPage />
-      </ChakraProvider>
     </Provider>
+      </ChakraProvider>
   );
 }
 
