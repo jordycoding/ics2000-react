@@ -55,4 +55,17 @@ async function dimDevice(deviceId: number, percentage: number) {
   });
 }
 
-export { getRoomsRaw, getRooms, getDevices, turnOn, turnOff, dimDevice };
+async function getLoggedIn(): Promise<boolean> {
+  const response = await fetch("/api/logged_in");
+  return await response.json();
+}
+
+export {
+  getRoomsRaw,
+  getRooms,
+  getDevices,
+  turnOn,
+  turnOff,
+  dimDevice,
+  getLoggedIn,
+};

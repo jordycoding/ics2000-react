@@ -6,9 +6,13 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Tooltip,
+  Spacer,
+  Button,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { debounce, throttle } from "lodash";
+import React, { useCallback, useEffect, useState } from "react";
 import type Device from "../../types/device";
+import { dimDevice, turnOff, turnOn } from "../../utils/icsApiHelpers";
 
 interface Props {
   device: Device;
@@ -17,9 +21,40 @@ interface Props {
 function Dimmer({ device }: Props) {
   const [sliderValue, setSliderValue] = useState(0);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  const dim = useCallback(
+    throttle((value) => {
+      // dimDevice(device.id, value);
+      console.log(value);
+    }, 500),
+    []
+  );
+  function onClick() {
+    turnOn(device.id);
+  }
+  function offClick() {
+    turnOff(device.id);
+  }
+  useEffect(() => {
+    if (ready) {
+      dim(sliderValue);
+    }
+  }, [sliderValue]);
+  useEffect(() => setReady(true), []);
+
   return (
     <Flex flexDirection="column" width="100%">
-      <Text>{device.name}</Text>
+      <Flex flexDirection="row" gap={2}>
+        <Text>{device.name}</Text>
+        <Spacer />
+        <Button size="sm" onClick={() => onClick()}>
+          On
+        </Button>
+        <Button size="sm" onClick={() => offClick()}>
+          Off
+        </Button>
+      </Flex>
       <Slider
         min={0}
         max={100}
