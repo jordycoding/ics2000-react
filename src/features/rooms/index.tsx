@@ -9,8 +9,10 @@ function Rooms() {
   const rooms = useAppSelector((state) => state.rooms.rooms);
   const status = useAppSelector((state) => state.rooms.loading);
   useEffect(() => {
-    dispatch(fetchRooms());
-  }, []);
+    if (rooms.length === 0) {
+      dispatch(fetchRooms());
+    }
+  }, [rooms]);
   if (status === "pending") {
     return <Spinner />;
   }

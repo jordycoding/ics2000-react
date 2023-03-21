@@ -9,8 +9,10 @@ function Scenes() {
   const scenes = useAppSelector((state) => state.scenes.scenes);
   const status = useAppSelector((state) => state.scenes.loading);
   useEffect(() => {
-    dispatch(fetchScenes());
-  }, []);
+    if (scenes.length === 0) {
+      dispatch(fetchScenes());
+    }
+  }, [scenes]);
   if (status === "pending") {
     return <Spinner />;
   }
