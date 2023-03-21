@@ -11,34 +11,34 @@ import theme from "./theme";
 import { useAppDispatch, useAppSelector } from "./utils/hooks";
 
 function App() {
-  const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchLoggedIn());
-  }, []);
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainPage />,
-      children: [
+    const loggedIn = useAppSelector((state) => state.login.loggedIn);
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(fetchLoggedIn());
+    }, []);
+    const router = createBrowserRouter([
         {
-          path: "rooms",
-          element: <Rooms />,
+            path: "/",
+            element: <MainPage />,
+            children: [
+                {
+                    path: "rooms",
+                    element: <Rooms />,
+                },
+                {
+                    path: "scenes",
+                    element: <h1>Scenes</h1>,
+                },
+            ],
         },
-        {
-          path: "scenes",
-          element: <h1>Scenes</h1>,
-        },
-      ],
-    },
-    { path: "/rooms", element: <Rooms /> },
-    { path: "/login", element: <LoginPage /> },
-  ]);
-  return (
-    <ChakraProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ChakraProvider>
-  );
+        { path: "/rooms", element: <Rooms /> },
+        { path: "/login", element: <LoginPage /> },
+    ]);
+    return (
+        <ChakraProvider theme={theme}>
+            <RouterProvider router={router} />
+        </ChakraProvider>
+    );
 }
 
 export default App;
