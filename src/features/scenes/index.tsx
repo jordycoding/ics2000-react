@@ -17,7 +17,7 @@ function Scenes() {
   return (
     <Flex direction="column" gap={2}>
       {scenes.map((scene) => (
-        <Scene scene={scene} />
+        <Scene key={scene.id} scene={scene} />
       ))}
     </Flex>
   );

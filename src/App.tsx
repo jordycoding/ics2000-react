@@ -32,7 +32,6 @@ function App() {
         },
       ],
     },
-    { path: "/rooms", element: <Rooms /> },
     { path: "/login", element: <LoginPage /> },
   ]);
   return (

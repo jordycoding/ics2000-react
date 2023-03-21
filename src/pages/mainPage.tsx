@@ -1,16 +1,13 @@
 import { Box } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import NavBar from "../components/navbar";
-import Rooms from "../features/rooms";
-import { getLoggedIn } from "../utils/icsApiHelpers";
-import LoginPage from "./login";
+import { useAppSelector } from "../utils/hooks";
 
 function MainPage() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    getLoggedIn().then((res) => setLoggedIn(res));
-  }, []);
+  const login = useAppSelector((state) => state.login);
+  if (!login.loggedIn && login.loading === "idle") {
+    return <Navigate to="/login" />;
+  }
   return (
     <>
       <NavBar />

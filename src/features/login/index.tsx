@@ -1,22 +1,24 @@
 import { AtSignIcon, LockIcon } from "@chakra-ui/icons";
 import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Stack,
+    Box,
+    Button,
+    Flex,
+    Heading,
+    Input,
+    InputGroup,
+    InputLeftElement,
+    Stack
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { fetchLoggedIn } from "../../stores/loginSlice";
-import { useAppDispatch } from "../../utils/hooks";
+import { useAppDispatch, useAppSelector } from "../../utils/hooks";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const dispatch = useAppDispatch();
   async function icsLogin() {
     const response = await fetch("/api/login", {
@@ -26,9 +28,11 @@ function Login() {
       },
       body: JSON.stringify({ email, password }),
     });
-    console.log(response.status === 200);
     dispatch(fetchLoggedIn());
     setError(response.status !== 200);
+  }
+  if (loggedIn) {
+    return <Navigate to="/rooms" />;
   }
   return (
     <Flex
