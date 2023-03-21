@@ -15,8 +15,11 @@ function NavBar() {
         Klik<span style={{ color: "#38A169" }}>Aan</span>Klik
         <span style={{ color: "#E53E3E" }}>Uit</span>
       </Text>
-      <RouterLink to="/login">
+      <RouterLink to="/rooms">
         <Link>Rooms</Link>
+      </RouterLink>
+      <RouterLink to="/scenes">
+        <Link>Scenes</Link>
       </RouterLink>
     </Flex>
   );

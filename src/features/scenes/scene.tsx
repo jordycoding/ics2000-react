@@ -1,5 +1,5 @@
 import { Flex, Text, Spacer, IconButton } from "@chakra-ui/react";
-import { FaPlay } from "react-icons/fa";
+import { FaEdit, FaPlay, FaStop } from "react-icons/fa";
 import SceneType from "../../types/scene";
 
 interface Props {
@@ -7,10 +7,12 @@ interface Props {
 }
 function Scene(props: Props) {
   return (
-    <Flex direction="row" alignItems="center">
+    <Flex direction="row" alignItems="center" gap={2}>
       <Text>{props.scene.name}</Text>
       <Spacer />
-      <IconButton aria-label="start-scene" icon={<FaPlay />} />
+      <IconButton colorScheme="green" aria-label="start" icon={<FaPlay />} />
+      <IconButton colorScheme="red" aria-label="stop" icon={<FaStop />} />
+      <IconButton colorScheme="blue" aria-label="edit" icon={<FaEdit />} />
     </Flex>
   );
 }
