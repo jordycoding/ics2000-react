@@ -1,12 +1,20 @@
-import { Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Link,
+  Stack,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
 function NavBar() {
+  const { colorMode } = useColorMode();
   return (
     <Flex
       direction="row"
       alignItems="center"
-      backgroundColor="gray.700"
+      backgroundColor={colorMode == "dark" ? "gray.700" : "gray.200"}
       padding={3}
       gap={3}
       shadow="md"
