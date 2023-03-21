@@ -14,7 +14,7 @@ function NavBar() {
     <Flex
       direction="row"
       alignItems="center"
-      backgroundColor={colorMode == "dark" ? "gray.700" : "gray.200"}
+      backgroundColor={colorMode === "dark" ? "gray.700" : "gray.200"}
       padding={3}
       gap={3}
       shadow="md"
