@@ -1,13 +1,20 @@
 import { Box } from "@chakra-ui/react";
-import { Navigate, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "../components/navbar";
 import { useAppSelector } from "../utils/hooks";
 
 function MainPage() {
   const login = useAppSelector((state) => state.login);
-  if (!login.loggedIn && login.loading === "idle") {
-    return <Navigate to="/login" />;
-  }
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!login.loggedIn && login.loading === "idle") {
+      navigate("/login");
+    }
+    if (login.loggedIn && login.loading === "idle") {
+      navigate("/rooms");
+    }
+  }, [login.loggedIn, login.loading]);
   return (
     <>
       <NavBar />
