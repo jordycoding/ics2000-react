@@ -14,7 +14,9 @@ function MainPage() {
   return (
     <>
       <NavBar />
-      <Outlet />
+      <Box p={5}>
+        <Outlet />
+      </Box>
     </>
   );
 }
