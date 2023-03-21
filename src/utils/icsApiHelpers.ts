@@ -1,6 +1,7 @@
 import type RoomDto from "../types/roomDto";
 import type Room from "../types/room";
 import type Device from "../types/device";
+import Scene from "../types/scene";
 
 async function getRoomsRaw(): Promise<RoomDto[]> {
   const response = await fetch("/api/rooms");
@@ -60,6 +61,11 @@ async function getLoggedIn(): Promise<boolean> {
   return await response.json();
 }
 
+async function getScenes(): Promise<Scene> {
+  const response = await fetch("/api/scenes");
+  return await response.json();
+}
+
 export {
   getRoomsRaw,
   getRooms,
@@ -68,4 +74,5 @@ export {
   turnOff,
   dimDevice,
   getLoggedIn,
+  getScenes
 };
