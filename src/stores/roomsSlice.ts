@@ -22,9 +22,14 @@ const roomsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchRooms.fulfilled, (state, action) => {
-      state.rooms = action.payload;
-    });
+    builder
+      .addCase(fetchRooms.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.rooms = action.payload;
+      })
+      .addCase(fetchRooms.pending, (state, action) => {
+        state.loading = "pending";
+      });
   },
 });
 

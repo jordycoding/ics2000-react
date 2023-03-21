@@ -22,13 +22,18 @@ const scenesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchScenes.fulfilled, (state, action) => {
-      state.scenes = action.payload;
-    });
+    builder
+      .addCase(fetchScenes.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.scenes = action.payload;
+      })
+      .addCase(fetchScenes.pending, (state, action) => {
+        state.loading = "pending";
+      });
   },
 });
 
-const {reducer} = scenesSlice;
+const { reducer } = scenesSlice;
 
 export default reducer;
-export {fetchScenes};
+export { fetchScenes };

@@ -6,13 +6,17 @@ import Scene from "./scene";
 
 function Scenes() {
   const dispatch = useAppDispatch();
-  const state = useAppSelector((sceneState) => sceneState.scenes);
+  const scenes = useAppSelector((state) => state.scenes.scenes);
+  const status = useAppSelector((state) => state.scenes.loading);
   useEffect(() => {
     dispatch(fetchScenes());
   }, []);
+  if (status === "pending") {
+    return <Spinner />;
+  }
   return (
     <Flex direction="column" gap={2}>
-      {state.scenes.map((scene) => (
+      {scenes.map((scene) => (
         <Scene scene={scene} />
       ))}
     </Flex>
