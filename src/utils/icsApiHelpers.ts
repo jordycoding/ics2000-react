@@ -56,6 +56,26 @@ async function dimDevice(deviceId: number, percentage: number) {
   });
 }
 
+async function startScene(sceneId: number) {
+  await fetch(`/api/scenes/${sceneId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ state: "Play" }),
+  });
+}
+
+async function stopScene(sceneId: number) {
+  await fetch(`/api/scenes/${sceneId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ state: "Stop" }),
+  });
+}
+
 async function getLoggedIn(): Promise<boolean> {
   const response = await fetch("/api/logged_in");
   return await response.json();
@@ -73,6 +93,8 @@ export {
   turnOn,
   turnOff,
   dimDevice,
+  startScene,
+  stopScene,
   getLoggedIn,
-  getScenes
+  getScenes,
 };
