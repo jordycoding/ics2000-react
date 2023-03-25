@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type Scene from "../types/scene";
+import Scene from "../types/scene";
 import { getScenes } from "../utils/icsApiHelpers";
 
 const fetchScenes = createAsyncThunk("scenes/fetchAll", async () => {

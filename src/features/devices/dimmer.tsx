@@ -1,18 +1,18 @@
 import {
-  Slider,
+  Button,
   Flex,
-  Text,
-  SliderTrack,
+  Slider,
   SliderFilledTrack,
   SliderThumb,
-  Tooltip,
+  SliderTrack,
   Spacer,
-  Button,
+  Text,
+  Tooltip,
 } from "@chakra-ui/react";
-import { debounce, throttle } from "lodash";
-import React, { useCallback, useEffect, useState } from "react";
+import { throttle } from "lodash";
+import { useCallback, useEffect, useState } from "react";
 import type Device from "../../types/device";
-import { dimDevice, turnOff, turnOn } from "../../utils/icsApiHelpers";
+import { turnOff, turnOn } from "../../utils/icsApiHelpers";
 
 interface Props {
   device: Device;
